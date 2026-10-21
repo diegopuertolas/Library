@@ -15,3 +15,20 @@ foreach (var publication in allPublications)
 {
     Console.WriteLine(publication.GetDescription());
 }
+
+Console.Write("Mostrar publicaciones posteriores al año: ");
+var input = Console.ReadLine();
+
+if (int.TryParse(input, out int decision))
+{
+    foreach (var publication in allPublications)
+    {
+        if (publication.Year > decision)
+        {
+            Console.WriteLine(publication.GetDescription());
+        }
+    }
+} else
+{
+    Console.WriteLine("Debe introducir un número entero.");    
+}
