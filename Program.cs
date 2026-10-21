@@ -11,24 +11,35 @@ var allPublications = new List<Publication>
     spiderman
 };
 
-foreach (var publication in allPublications)
-{
-    Console.WriteLine(publication.GetDescription());
-}
+GetPublications(allPublications);
+GetPublicationsAfterYear(allPublications);
 
-Console.Write("Mostrar publicaciones posteriores al año: ");
-var input = Console.ReadLine();
-
-if (int.TryParse(input, out int decision))
+static void GetPublications(List<Publication> allPublications)
 {
+    Console.WriteLine("LISTADO DE PUBLICACIONES");
     foreach (var publication in allPublications)
     {
-        if (publication.Year > decision)
+        Console.WriteLine(publication.GetDescription());
+    }
+}
+
+static void GetPublicationsAfterYear(List<Publication> allPublications)
+{
+    Console.Write("Mostrar publicaciones posteriores al año: ");
+    var input = Console.ReadLine();
+
+    if (int.TryParse(input, out int decision))
+    {
+        foreach (var publication in allPublications)
         {
-            Console.WriteLine(publication.GetDescription());
+            if (publication.Year > decision)
+            {
+                Console.WriteLine(publication.GetDescription());
+            }
         }
     }
-} else
-{
-    Console.WriteLine("Debe introducir un número entero.");    
+    else
+    {
+        Console.WriteLine("Debe introducir un número entero.");
+    }
 }
